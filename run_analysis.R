@@ -28,7 +28,6 @@
 
 library(base)
 library(utils)
-library(data.table)
 
 
 #
@@ -232,7 +231,6 @@ tidy2 <- function(tidyObservations) {
     
     # rename Group.1 --> activity (it's our aggregation column)
     names(agg) <- gsub("Group.1", "activity", names(agg))
-    str(agg)
     
     detach(tidyObservations)  
     agg

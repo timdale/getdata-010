@@ -20,7 +20,7 @@ The observation data was split up by the provider between a training set and tes
 - *test/subject_test.txt* and *train/subject_train.txt* is a single column of subject IDs.  The observations were made by 30 subjects, with an ID from 1..30.  There is a row corresponding to each row in the respective *X* observation file, thus indicating which subject collected that respective observation.
 - *test/y_test.txt* and *train/y_train.txt* is a single column of activity IDs.  Similar to the subject IDs, there is a row corresponding to each row in the respective *X* observation file, thus indicating which activity was being performed for that observation.  See *activity_labels.txt* below.
 - *features.txt* is the feature name for each feature in the *X* observation files.  I.e., it contains the names for each column of data in the *X* files.  There are thus 561 names in this file, one for each column of data.
-- *features_info.txt* contains the details for each feature, as provided by UCI.  This file is not used in creating the tidy data, but is informative for understanding the data.
+- *features_info.txt* contains the details for each feature, as provided by UCI.  This file is not used in creating the tidy data, but is informative for understanding the data and variable naming.
 - *activity_labels.txt* contains the mapping of activity IDs to a meaningful description:
 ```
         1 WALKING
@@ -57,7 +57,9 @@ The observation column names are next made a little more readable.  This is a si
 1. The descriptive activities  (e.g., "WALKING", "STANDING") are translated from the activity IDs, and left-pended to each observation, forming a column named "activity".  This makes the data easier for humans to read instead of a numeric ID for the activity.
 2. The subject IDs are merged from the test and training sets, and are left-pended to each observation, forming a column named "subjectId".
 
-The result is a data frame of 68 columns.  The first (left-most) column is "subjectId", followed by "activity", followed by the 79 named mean/stddev columns.
+
+## The Tidy Data
+The resulting tidy data is a data frame of 68 columns.  The first (left-most) column is "subjectId", followed by "activity", followed by the 66 named mean/stddev columns:
 
 ```
 'data.frame':    10299 obs. of  68 variables:
@@ -131,14 +133,28 @@ The result is a data frame of 68 columns.  The first (left-most) column is "subj
  $ freqBodyBodyGyroJerkMag-std : num  -0.907 -0.938 -0.983 -0.986 -0.991 ..
  ```
 
+### Variable Names
+From the UCI info: The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals timeAcc-XYZ and timeGyro-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (timeBodyAcc-XYZ and timeGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz.
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (timeBodyAccJerk-XYZ and timeBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (timeBodyAccMag, timeGravityAccMag, timeBodyAccJerkMag, timeBodyGyroMag, timeBodyGyroJerkMag).
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing freqBodyAcc-XYZ, freqBodyAccJerk-XYZ, freqBodyGyro-XYZ, freqBodyAccJerkMag, freqBodyGyroMag, freqBodyGyroJerkMag.
+
+These signals were used to estimate variables of the feature vector for each pattern:
+'-X', '-Y', or '-Z' suffix is used to denote 3-axial signals in the X, Y and Z directions.
+
+'-mean' and '-std' is used to denote a mean or standard deviation, respectively.
+
+Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+
 
 ## Aggregating and Averaging
-The second part of the project is to aggregate the obserations by activity, for each subject, and then find the average (mean) of each feature.
+The second part of the project is to aggregate the observations by activity, for each subject, and then find the average (mean) of each feature.
 
 The aggregation is therefore applied across the "activity" and "subjectId" columns (in that order), with a simple mean computed on each feature.
 
 ## Persisting the Results
-The tidied observations are written to *tidydata.csv*, in the working directory of *run_analysis.R*.
+The tidied observations are written as simple comma-separated columns to *tidydata.csv*, in the working directory of *run_analysis.R*.
 
-The aggregated averages are written to *tidydata2.csv*, in the same working directory.
+The aggregated averages are similarly written to *tidydata2.csv*, in the same working directory.
 
