@@ -239,7 +239,7 @@ tidy2 <- function(tidyObservations) {
 }
 
 
-
+ 
 run.analysis <- function() {
     
     tidy <- observations()
