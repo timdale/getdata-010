@@ -25,12 +25,11 @@ Please see *CodeBook.md* for how and where to download the data.
 
 Load "run_analysis.R" and run the function *run.analysis()*:
 ```
-
 > run.analysis()
 Reading raw data...
 Tidying the raw data...
-Writing tidy data file
+Writing tidy data fileto file tidydata.txt
 Aggregating the mean by activity and subject
-Writing tidy2 data file
+Writing tidy aggregated averages data fileto file tidydata_aggAve.txt
 > 
 ```

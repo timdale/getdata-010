@@ -149,7 +149,7 @@ The second part of the project is to aggregate the observations by activity, for
 The aggregation is therefore applied across the "activity" and "subjectId" columns (in that order), with a simple mean computed on each feature.
 
 ## Persisting the Results
-The tidied observations are written as simple comma-separated columns to *tidydata.csv*, in the working directory of *run_analysis.R*.
+The tidied observations are written (via write.table()) to *tidydata.txt*, in the working directory of *run_analysis.R*.
 
-The aggregated averages are similarly written to *tidydata2.csv*, in the same working directory.
+The aggregated averages are similarly written to *tidydata_aggAve.txt*, in the same working directory.
 

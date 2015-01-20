@@ -237,17 +237,21 @@ tidy2 <- function(tidyObservations) {
 }
 
 
- 
+writeTidy <- function(tidy, explanation, fileName) {
+    message(paste0(explanation, 'to file ', fileName))
+    write.table(tidy, file=fileName, row.names=FALSE, quote=FALSE);
+}
+
+
+
 run.analysis <- function() {
     
     tidy <- observations()
-    message("Writing tidy data file")
-    write.csv(tidy, file='tidydata.csv', row.names=FALSE, quote=FALSE)
+    writeTidy(tidy, "Writing tidy data file", 'tidydata.txt')
     
     
     agg <- tidy2(tidy)
-    message("Writing tidy2 data file")
-    write.csv(agg, file='tidydata2.csv', row.names=FALSE, quote=FALSE)
+    writeTidy(agg, "Writing tidy aggregated averages data file", 'tidydata_aggAve.txt')
 }
 
 
