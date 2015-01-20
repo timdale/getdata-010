@@ -1,8 +1,3 @@
----
-title: "CodeBook.md"
-output: html_document
----
-
 # Code Book
 
 ## Raw Data Collection
@@ -37,7 +32,7 @@ The observation data was split up by the provider between a training set and tes
 
 ### Merging the Test and Training Data
 
-1. The observation data is first read from the *X* files and concatentated into a data frame with column names read and applied from *features.txt*.  There are now a total of 10299 observations.
+1. The observation data is first read from the *X* files and concatentated into a data frame with column names read and applied from *features.txt*.  There are a total of 10299 observations.
 2. Likewise the activity IDs are merged from the *y* files, for a total of 10299 activity IDs, each corresponding to the same ordinal observation.
 3. Likewise the subject IDs are merged from the *subject* files, for a total of 10299 subject IDs, each corresponding to the same ordinal observation.
 
@@ -45,7 +40,7 @@ Note that all merging is done in order: test, training.
 
 
 ### Thatching 
-This project is only concerned with features that contain means or standard deviations.  The pertinent columns will all have names that contain ```-mean()``` or ```-std()```, respectively.  All other columns are dropped from the observation data, leaving 66 columns.
+This project is only concerned with features that contain means or standard deviations.  The pertinent columns will all have names that contain ```-mean()``` or ```-std()```, respectively.  All other columns are dropped from the observation data, leaving 66 columns remaining.
 
 ### Preening
 The observation column names are next made a little more readable.  This is a simple transformation:

@@ -21,7 +21,7 @@ From the data set in step 4, creates a second, independent tidy data set with th
 
 ## Implementation and Execution
 
-Please see *CodeBook.md* for how to download the data.
+Please see *CodeBook.md* for how and where to download the data.
 
 Load "run_analysis.R" and run the function *run.analysis()*:
 ```
